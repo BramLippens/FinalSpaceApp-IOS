@@ -9,10 +9,7 @@ import Foundation
 
 struct Character: Identifiable, Codable{
     let id: Int
-    let name: String
-    let status: String
-    let species: String
-    let gender: String
-    let hair: String
-    
+    let name, img_url: String
+    let status, species, gender, hair, origin: String?
+    let alias, abilities: [String]
 }

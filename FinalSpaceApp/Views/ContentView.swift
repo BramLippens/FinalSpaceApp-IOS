@@ -18,6 +18,7 @@ struct ContentView: View {
         ZStack{
             VStack{
                 TabView(selection: $selectedTab){
+                    CharacterListView().tag(Tab.house)
                     ForEach(Tab.allCases, id: \.rawValue){ tab in
                         HStack{
                             Image(systemName: tab.rawValue)
@@ -27,10 +28,11 @@ struct ContentView: View {
                         }.tag(tab)
                     }
                 }
-            }
+            }.padding(.bottom, 80)
             VStack{
                 Spacer()
                 CustomTabBar(selectedTab: $selectedTab)
+                    
             }
         }
         
