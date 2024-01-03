@@ -8,16 +8,21 @@
 import Foundation
 
 class CharacterViewModel: ObservableObject{
-    @Published var characters: [Character] = []
+    @Published private(set) var characters: [Character] = []
+    @Published private(set) var isLoading = false
     
-    let url = URL(string: "https://finalspaceapi.com/api/v0/character")!
     func fetchCharacters() async throws{
+        let url = URL(string: "https://finalspaceapi.com/api/v0/character")!
+        isLoading = true
+        
         let (data, _) = try await URLSession.shared.data(from: url)
         
-        let decoded = try JSONDecoder().decode([Character].self, from: data)
-        
-        await MainActor.run{
-            characters = decoded
+        let decodedCharacters = try JSONDecoder().decode([Character].self, from: data)
+
+        // Update characters on the main thread using MainActor
+        await MainActor.run {
+            self.characters = decodedCharacters
+            self.isLoading = false
         }
     }
     
@@ -32,5 +37,3 @@ class CharacterViewModel: ObservableObject{
         characters.removeFirst()
     }
 }
-
-
