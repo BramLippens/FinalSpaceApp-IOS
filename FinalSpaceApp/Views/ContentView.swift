@@ -18,15 +18,9 @@ struct ContentView: View {
         ZStack{
             VStack{
                 TabView(selection: $selectedTab){
-                    CharacterListView().tag(Tab.house)
-                    ForEach(Tab.allCases, id: \.rawValue){ tab in
-                        HStack{
-                            Image(systemName: tab.rawValue)
-                            Text("\(tab.rawValue.capitalized)")
-                                .bold()
-                                .animation(nil, value: selectedTab)
-                        }.tag(tab)
-                    }
+                    CharacterListView().tag(Tab.person)
+                    EpisodeListView().tag(Tab.message)
+                    LocationListView().tag(Tab.house)
                 }
             }.padding(.bottom, 80)
             VStack{
