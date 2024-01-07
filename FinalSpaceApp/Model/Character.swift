@@ -5,7 +5,7 @@
 //  Created by Bram Lippens on 02/01/2024.
 //
 
-import Foundation
+import SwiftUI
 
 struct Character: Identifiable, Codable{
     let id: Int

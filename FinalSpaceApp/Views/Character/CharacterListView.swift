@@ -17,7 +17,7 @@ struct CharacterListView: View {
             } else {
                 NavigationView {
                     List {
-                        ForEach(viewModel.characters, id: \.id) { character in
+                        ForEach(viewModel.getBookmarkedCharacters(), id: \.id) { character in
                             NavigationLink(destination: CharacterDetailView(character: character)){
                                 HStack {
                                     AsyncImage(url: URL(string: character.img_url)) { image in
@@ -29,13 +29,23 @@ struct CharacterListView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     
                                     Text(character.name)
+                                    Spacer()
+                                    Image(systemName:viewModel.contains(character: character) ? "bookmark.fill" : "bookmark")
+                                        .foregroundStyle(.blue)
+                                        .onTapGesture{
+                                            viewModel.bookmark(character: character)
+                                        }
                                 }
                             }
+                            
                         }
                     }
                     .navigationTitle("Final Space Characters")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            Button("Bookmarks"){
+                                viewModel.sortBookmarks()
+                            }
                             Button("Shuffle") {
                                 viewModel.shuffleOrder()
                             }

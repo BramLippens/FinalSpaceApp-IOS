@@ -5,7 +5,7 @@
 //  Created by Bram Lippens on 03/01/2024.
 //
 
-import Foundation
+import SwiftUI
 
 class EpisodeViewModel: ObservableObject{
     @Published private(set) var episodes: [Episode] = []

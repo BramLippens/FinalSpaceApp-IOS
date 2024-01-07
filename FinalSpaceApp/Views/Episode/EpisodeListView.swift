@@ -20,11 +20,7 @@ struct EpisodeListView: View {
                         ForEach(viewModel.episodes, id: \.id) { episode in
                             NavigationLink(destination: EpisodeDetailView(episode: episode)){
                                 HStack {
-                                    AsyncImage(url: URL(string: episode.img_url)) { image in
-                                        image.resizable()
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
+                                    Image("Placeholder")
                                     .frame(width: 50, height: 50)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     

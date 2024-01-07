@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab: Tab = .house
+    @State private var selectedTab: Tab = .globe
     
     init(){
         UITabBar.appearance().isHidden = true
@@ -19,8 +19,8 @@ struct ContentView: View {
             VStack{
                 TabView(selection: $selectedTab){
                     CharacterListView().tag(Tab.person)
-                    EpisodeListView().tag(Tab.message)
-                    LocationListView().tag(Tab.house)
+                    EpisodeListView().tag(Tab.video)
+                    LocationListView().tag(Tab.globe)
                 }
             }.padding(.bottom, 80)
             VStack{

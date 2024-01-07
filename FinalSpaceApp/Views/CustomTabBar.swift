@@ -8,9 +8,9 @@
 import SwiftUI
 
 enum Tab: String, CaseIterable{
-    case house
-    case message
     case person
+    case globe = "globe.americas"
+    case video
 }
 
 struct CustomTabBar: View {
@@ -42,5 +42,5 @@ struct CustomTabBar: View {
 }
 
 #Preview {
-    CustomTabBar(selectedTab: .constant(.house))
+    CustomTabBar(selectedTab: .constant(.globe))
 }
