@@ -25,4 +25,7 @@ class LocationViewModel: ObservableObject{
     }
     
     //TODO: create a function with validation to create new location
+    func addLocation(location: Location){
+        self.locations.insert(location, at: 1)
+    }
 }

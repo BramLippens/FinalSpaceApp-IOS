@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Location: Identifiable, Codable{
-    let id: Int
-    let name, type, img_url: String
-    let inhabitants: [String]
+    var id: Int
+    var name, type, img_url: String
+    var inhabitants: [String]
 }
+

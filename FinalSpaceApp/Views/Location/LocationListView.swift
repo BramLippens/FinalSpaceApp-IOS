@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationListView: View {
     @StateObject private var viewModel = LocationViewModel()
+    @State private var isCreateShowing: Bool = false
     
     var body: some View{
         VStack{
@@ -33,6 +34,18 @@ struct LocationListView: View {
                             }
                         }
                     }.navigationTitle("Locations")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            Button("Add Location"){
+                                isCreateShowing.toggle()
+                            }
+                        }
+                    }
+                    .sheet(isPresented: $isCreateShowing){
+                        CreateLocationView{ location in
+                            viewModel.addLocation(location: location)
+                        }
+                    }
                 }
             }
         }.task {
